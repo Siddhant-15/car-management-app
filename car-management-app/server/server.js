@@ -18,7 +18,13 @@ const connectDB = require('./config/db');
 const app = express();
 
 // Middleware
-app.use(cors()); // Enable Cross-Origin Resource Sharing
+app.use(cors(
+    {
+        origin: ["https://deploy-mern-lwhq.vercel.app"],
+        methods: ["POST", "GET", "PUT", "DELETE"],
+        credentials: true
+    }
+)); // Enable Cross-Origin Resource Sharing
 app.use(express.json()); // Parse incoming JSON requests
 app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // Serve images statically
 
